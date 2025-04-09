@@ -1,0 +1,10 @@
+Bootstrap: docker
+From: python:3.9-slim
+
+%post
+    pip install --upgrade pip
+    pip install requests duckdb  geopy pytest pytest-cov # Add any packages your program needs
+
+%runscript
+    # This runscript passes all command line arguments to main.py.
+    exec python main.py "$@"
